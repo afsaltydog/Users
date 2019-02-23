@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Edit User</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                outline: 1px dotted black;
+            }
+            .container{
+                background-color: white;
+                min-height: 9700px;
+                min-width: 970px;
+                margin: 0px auto;
+                text-align: center;
+                border: 5px solid grey;
+            }
+            a{
+                display: block;
+                text-align: right;
+            }
+            .container h1{
+                text-align: center;
+            }
+            .container label{
+                text-align: left;
+                margin-left: -130px;
+                margin-bottom: -5px;
+            }
+    </style>
+    </head>
+    <body>
+        <div class='container'>
+            <a href='/'>Home</a>
+            <h1>Edit User {{dbInfo[0]['id']}}</h1>
+            <form action="/users/{{dbInfo[0]['id']}}/update" method="POST">
+                <label>First Name:</label>
+                <p><input type="text" name="fname" value="{{dbInfo[0]['first_name']}}"></p>
+                <label>Last Name:</label>
+                <p><input type="text" name="lname" value="{{dbInfo[0]['last_name']}}"></p>
+                <label>Email: </label>
+                <p><input type="text" name="form_email" value="{{dbInfo[0]['email']}}"></p>
+                <input type="submit" value="Update">
+            </form>
+            <br>
+            <a id='bottomlink' href="/users/{{dbInfo[0]['id']}}">Show User</a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Users</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                outline: 1px dotted black;
+            }
+            .container{
+                background-color: white;
+                min-height: 970px;
+                min-width: 970px;
+                margin: 0px auto;
+                text-align: center;
+                border: 5px solid grey;
+            }
+            .container h1{
+                text-align: left;
+            }
+            .show{
+                text-align: center;
+                min-height: 200px;
+                min-width: 300px;
+            }
+            .show p{
+                text-align: left;
+            }
+            table, td{
+                border: 1px solid grey;
+            }
+            table{
+                /* border-collapse: collapse; */
+                text-align: center;
+                margin: 20px 0px 20px 0px;
+                min-height: 50px;
+                min-width: 100px;
+                height: auto;
+                width: auto;
+            }
+            td{
+                height: 10px;
+                width: 10px;
+            }
+            .add{
+                height: 100px;
+                width: 300px;
+                text-align: center;
+                margin-left: 400px;
+            }
+            a{
+                display: inline-block;
+                text-align: left;
+            }
+            #bottomlink{
+                text-align: left;
+                margin-left: -985px
+            }
+    </style>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>All Users</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Created At</th>
+                    <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for x in dbInfo %}
+                    <tr>
+                    <td>{{x['id']}}</td>
+                    <td>{{x['first_name']}} {{x['last_name']}}</td>
+                    <td>{{x['email']}}</td>
+                    <td>{{x['created_at']}}</td>
+                    <td>
+                        <a href="/users/{{x['id']}}">Show</a>
+                        <a href="/users/{{x['id']}}/edit">Edit</a>
+                        <a href="/users/{{x['id']}}/destroy">Delete</a>
+                    </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class='show'></div>
+                <a href='/users/new' id='bottomlink'>Add a New User</a>
+            </div>
+        </div>
+    </body>
+</html>

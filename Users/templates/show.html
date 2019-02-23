@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Show User</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                outline: 1px dotted black;
+            }
+            .container{
+                background-color: white;
+                min-height: 9700px;
+                min-width: 970px;
+                margin: 0px auto;
+                text-align: left;
+                border: 5px solid grey;
+            }
+            a{
+                display: block;
+                text-align: right;
+            }
+            .container h1{
+                text-align: left;
+            }
+            .container label{
+                text-align: left;
+                margin-left: -130px;
+                margin-bottom: -5px;
+            }
+            .bottomlinks{
+                text-align: left;
+                display: inline-block;
+            }
+    </style>
+    </head>
+    <body>
+        <div class='container'>
+            <a href='/'>Home</a>
+            <h1>User {{dbInfo[0]['id']}}</h1>
+            <br>
+            <p>Full Name: {{dbInfo[0]['first_name']}} {{dbInfo[0]['last_name']}}</p>
+            <p>Email: {{dbInfo[0]['email']}}</p>
+            <p>Created On: {{dbInfo[0]['created_at']}}</p>
+            <p>Last Updated On: {{dbInfo[0]['updated_at']}}</p>
+            <br>
+            <br>
+            <a class='bottomlinks' href="/users/{{dbInfo[0]['id']}}/edit">Edit</a>
+            <a class='bottomlinks' href="/users/{{dbInfo[0]['id']}}/destroy">Delete</a>
+        </div>
+    </body>
+</html>
